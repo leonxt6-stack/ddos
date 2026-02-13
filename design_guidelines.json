@@ -1,0 +1,124 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "Sentinel",
+      "archetype": "Electric & Neon",
+      "tone": "Futuristic, Alert, Precise, Authoritative",
+      "description": "A military-grade cybersecurity interface for the post-cloud era. It fuses high-fidelity 3D visualization with dense, actionable data."
+    },
+    "typography": {
+      "primary_font": "Rajdhani, sans-serif",
+      "secondary_font": "IBM Plex Sans, sans-serif",
+      "mono_font": "JetBrains Mono, monospace",
+      "google_fonts_import": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@500;600;700&display=swap",
+      "usage": {
+        "headings": "Rajdhani (SemiBold/Bold), tracking-tight, uppercase for major sections",
+        "body": "IBM Plex Sans, high legibility",
+        "data_readouts": "JetBrains Mono, tabular-nums for metrics"
+      }
+    },
+    "colors": {
+      "palette": {
+        "background": "#050505",
+        "surface": "#0a0a0a",
+        "primary": "#00f3ff",
+        "primary_dim": "#00f3ff20",
+        "secondary": "#fbbf24",
+        "destructive": "#ff003c",
+        "destructive_dim": "#ff003c20",
+        "success": "#00ff9d",
+        "muted": "#525252",
+        "border": "#ffffff15"
+      },
+      "tailwind_extend": {
+        "colors": {
+          "cyber-black": "#020202",
+          "cyber-gray": "#0a0a0a",
+          "neon-blue": "#00f3ff",
+          "neon-red": "#ff003c",
+          "neon-amber": "#fbbf24",
+          "neon-green": "#00ff9d"
+        }
+      },
+      "rules": [
+        "NEVER use pure white backgrounds. Use #050505 or #0a0a0a.",
+        "Use 'neon-blue' for healthy nodes/traffic.",
+        "Use 'neon-red' ONLY for attacks/threats.",
+        "Use 'neon-amber' for blockchain ledger activities.",
+        "Gradients should be used for glows/lighting, not solid fills."
+      ]
+    },
+    "layout": {
+      "grid_system": "Bento Grid (High Density Mode)",
+      "spacing": "Generous internal padding (p-6), tight gaps (gap-4)",
+      "z_index_strategy": {
+        "layer_0": "3D Canvas (Full Screen Background)",
+        "layer_1": "Grid Overlay (pointer-events-none)",
+        "layer_2": "HUD Panels (Floating Glass)",
+        "layer_3": "Modals/Alerts"
+      },
+      "containers": {
+        "glass_panel": "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm",
+        "solid_panel": "bg-cyber-gray border border-white/10 rounded-sm"
+      }
+    },
+    "components": {
+      "buttons": {
+        "primary": "bg-neon-blue/10 text-neon-blue border border-neon-blue/50 hover:bg-neon-blue/20 hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-all uppercase tracking-widest font-rajdhani",
+        "destructive": "bg-neon-red/10 text-neon-red border border-neon-red/50 hover:bg-neon-red/20 hover:shadow-[0_0_15px_rgba(255,0,60,0.3)] transition-all uppercase tracking-widest font-rajdhani",
+        "outline": "bg-transparent border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all"
+      },
+      "cards": {
+        "style": "Glassmorphism with 'Technical' borders",
+        "implementation": "bg-black/60 backdrop-blur-md border border-white/10 relative overflow-hidden group"
+      },
+      "inputs": {
+        "style": "bg-black/50 border-white/20 focus:border-neon-blue focus:ring-1 focus:ring-neon-blue/50 text-white placeholder:text-white/30 font-mono"
+      }
+    },
+    "visual_enhancers": {
+      "effects": [
+        "Scanlines: overlay a subtle repeating linear gradient for a CRT monitor feel",
+        "Glow: Use drop-shadow or box-shadow with color to simulate light emission",
+        "Grid Lines: Subtle background grid to anchor elements"
+      ],
+      "motion": {
+        "type": "Mechanical & Snappy",
+        "duration": "fast (150ms-200ms)",
+        "easing": "ease-out"
+      }
+    },
+    "3d_visualization": {
+      "library": "React Three Fiber (R3F)",
+      "camera": "PerspectiveCamera with OrbitControls (clamped)",
+      "environment": "Stars or Digital Grid floor",
+      "elements": {
+        "nodes": "Icosahedrons or Octahedrons (Wireframe or Glowing Material)",
+        "connections": "Lines with Bloom effect",
+        "particles": "InstancedMesh for high-performance traffic streams"
+      }
+    }
+  },
+  "implementation_plan": {
+    "steps": [
+      "1. Setup Tailwind config with neon colors and font families.",
+      "2. Create the 'GlassPanel' and 'HUDContainer' reusable components.",
+      "3. Build the R3F Canvas background with a basic rotating mesh to test performance.",
+      "4. Implement the Bento Grid layout for the main dashboard (HUD layer).",
+      "5. Develop the 'TrafficStream' and 'Node' 3D components.",
+      "6. Connect WebSocket mock data to drive the 3D visualization and charts.",
+      "7. Refine the 'Attack' visual mode (camera shake, red bloom)."
+    ]
+  },
+  "asset_urls": {
+    "icons": "Use 'lucide-react' for all UI icons (Shield, Activity, Server, Zap, Globe, AlertTriangle).",
+    "images": []
+  },
+  "universal_guidelines": [
+    "Theme: DEFAULT TO DARK MODE. There is no light mode.",
+    "Data-TestID: Add 'data-testid' to all interactive elements.",
+    "Accessibility: Ensure text contrast > 4.5:1. Neon colors are for accents/borders, not body text.",
+    "Performance: Use 'instancedMesh' for particles. Avoid heavy post-processing on the entire screen if FPS drops.",
+    "State: Use 'zustand' for global state (attack status, node health)."
+  ]
+}
